@@ -8,9 +8,9 @@ import dashboardRouter from './routes/dashboard.js';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Enable CORS for frontend on port 3000
+// Enable CORS for Vercel frontend & local dev
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
