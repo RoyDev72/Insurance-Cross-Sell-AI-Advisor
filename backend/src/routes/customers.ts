@@ -19,7 +19,8 @@ router.get('/', async (_req: Request, res: Response) => {
 // GET /api/customers/:id
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const customer = await fetchCustomerById(req.params.id);
+    const customerId = req.params.id as string;
+    const customer = await fetchCustomerById(customerId);
     if (!customer) {
       res.status(404).json({ error: 'Customer not found' });
       return;
@@ -78,7 +79,8 @@ router.post('/', async (req: Request, res: Response) => {
 // DELETE /api/customers/:id
 router.delete('/:id', async (req: Request, res: Response) => {
   try {
-    const deleted = await softDeleteCustomer(req.params.id);
+    const customerId = req.params.id as string;
+    const deleted = await softDeleteCustomer(customerId);
     if (!deleted) {
       res.status(404).json({ error: 'Customer not found or already archived.' });
       return;

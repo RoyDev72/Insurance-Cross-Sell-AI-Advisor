@@ -9,7 +9,7 @@ const router = Router();
 router.post('/:id', async (req: Request, res: Response) => {
   const startTime = Date.now();
   try {
-    const customerId = req.params.id;
+    const customerId = req.params.id as string;
     const customer = await fetchCustomerById(customerId);
 
     if (!customer) {
